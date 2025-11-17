@@ -15,7 +15,7 @@ const useChatbot = () => {
     await delay(1000);
     const newMessages: Message[] = [
       ...messages,
-      { text: message + "\n(response limited to 200 words)", sender: "user" },
+      { text: message, sender: "user" },
     ];
     setMessages(newMessages);
 
@@ -25,11 +25,11 @@ const useChatbot = () => {
         {
           model: "gpt-5.1",
           store: true,
-          messages: [{ role: "user", content: message }],
+          messages: [{ role: "user", content: message + " - Limit response to 200 words."}],
         },
         {
           headers: {
-            //Authorization: `Bearer API KEY HERE IMPORTANT`,
+            Authorization: `Bearer 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`,
             "Content-Type": "application/json",
           },
         }
